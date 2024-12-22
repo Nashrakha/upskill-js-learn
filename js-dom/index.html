@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Dom js</title>
+</head>
+
+<body>
+       <h1 id="domHeading">Hello World</h1>
+       <ul id="fruitList">
+              <li id="fruitList1">Apple</li>
+              <li>Orange</li>
+              <li>Guava</li>
+       </ul>
+       <div id="infoSection">
+
+       </div>
+       <script>
+              //access the element
+              const domHeading = document.getElementById('domHeading');
+              console.log(domHeading);
+              //change the element
+              domHeading.textContent = "Nashra khan";
+              console.log(domHeading);
+
+              const fruitList = document.querySelector('#fruitList');
+              console.log(fruitList);
+              const fruitList1 = document.querySelector('#fruitList1');
+              fruitList.innerHTML = `<strong>Pine Apple</strong>`;
+
+              const infoSection = document.querySelector('#infoSection')
+              const h2Element = document.createElement("h2");
+              h2Element.textContent = `Hello I am Here`;
+              infoSection.appendChild(h2Element);
+
+              const ulElement= document.createElement("ul");
+              infoSection.appendChild(ulElement);
+              for(i=1;i<=5;i++);
+              const liElement= document.createElement("li");
+              liElement.textContent=`Apple ${i}`;
+              ulElement.appendChild(liElement);
+
+
+
+
+       </script>
+       <script src="script.js"></script>
+</body>
+
+</html>

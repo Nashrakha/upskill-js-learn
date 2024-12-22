@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Async Await</title>
+</head>
+
+<body>
+       <h1>Asyn Await</h1>
+
+       <script>
+              // function hell 
+              // function task1(callback) {
+              //        setTimeout(() => {
+              //               console.log('task-1');
+              //               callback(null, 'result task-1')
+              //        }, 1000)
+              // }
+
+              // function task2(input, callback) {
+              //        setTimeout(() => {
+              //               console.log('task-2 with input', input);
+
+              //        }, 1000)
+              // }
+
+              // function task3(input, callback) {
+              //        setTimeout(() => {
+              //               console.log('task-3 with input', input);
+
+              //        }, 1000)
+              // }
+
+              // task1(function (err, result1) {
+              //        if (err) {
+              //               console.log('error in task 1', err);
+              //        }
+              //        else {
+              //               task2(result1, function (err, result2) {
+              //                      if (err) {
+              //                             console.log('error in task 2', err);
+              //                      }
+              //                      else {
+              //                             task3(result2, function (err, result3) {
+              //                                    if (err) {
+              //                                           console.log('error in task 3', err);
+              //                                    }
+              //                                    else{
+              //                                           console.log('finel result',result3);
+              //                                    }
+              //                             })
+              //                      }
+
+              //               })
+              //        }
+              // })
+
+
+              //        function add(){
+              //               return new Promise((resolve,reject)=>{
+              //                      setTimeout(()=>{
+              //                             resolve(10+20);
+              //                             console.log(resolve);
+              //                      },2000)
+              //               })
+              //        }
+              //        function sub(){
+              //               return new Promise((resolve,reject)=>{
+              //                      setTimeout(()=>{
+              //                           resolve(10-20);
+              //                           console.log(resolve);  
+              //                      },2000)
+              //               })
+              //        }
+              //        function multi(){
+              //               return new Promise((resolve,reject)=>{
+              //                      setTimeout(()=>{
+              //                           resolve(2*2);
+              //                           console.log(resolve);  
+              //                      },2000)
+              //               })
+              //        }
+              //        add()
+              //        .then(result=>sub(result))
+              //       .then(result2=>multi(result2))
+              //       .then(finalResult=>{
+              //        console.log("final result",finalResult);
+              //       })
+              //       .catch(err=>console.log(err));
+
+
+              // function Multi() {
+              //        return new Promise((resolve, reject) => {
+              //               setTimeout(() => {
+              //                      resolve(10 * 20);
+              //               }, 2000);
+              //        });
+              // }
+
+
+              // Multi()
+              //        .then((resolve) => resolve)
+              //        .then((finalResult) => {
+              //               console.log("Final Result", finalResult);
+              //        })
+              //        .catch((err) => console.log(err));
+
+
+
+              function add() {
+                     return new Promise((resolve, reject) => {
+                            setTimeout(() => {
+                                   resolve(10 + 20); // Resolves with 30
+                            }, 2000);
+                     });
+              }
+
+              function sub(value) {
+                     return new Promise((resolve, reject) => {
+                            setTimeout(() => {
+                                   resolve(value - 20); // Subtracts 20 from the input value
+                            }, 2000);
+                     });
+              }
+
+              function multi(value) {
+                     return new Promise((resolve, reject) => {
+                            setTimeout(() => {
+                                   resolve(value * 2); // Multiplies the input value by 2
+                            }, 2000);
+                     });
+              }
+
+              add()
+                     .then(result1 => {
+                            console.log("Result1 (add):", result1); // Logs the result of add()
+                            return sub(result1);
+                     })
+                     .then(result2 => {
+                            console.log("Result2 (sub):", result2); // Logs the result of sub()
+                            return multi(result2);
+                     })
+                     .then(finalResult => {
+                            console.log("Final Result (multi):", finalResult); // Logs the final result
+                     })
+                     .catch(err => console.log(err));
+       </script>
+</body>
+
+</html>

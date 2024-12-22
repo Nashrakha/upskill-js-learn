@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Document</title>
+</head>
+<style>
+       .container {
+              margin: auto;
+       }
+</style>
+
+<body>
+
+       <div class="conatiner">
+              <h1>asyncrones </h1>
+              <button onclick="fetchDataWithCallBack()">fetch data (callback)</button>
+              <div id="outputDiv"></div>
+       </div>
+       <script>
+              const outputDiv = document.getElementById('outputDiv');
+              const url = "https://jsonplaceholder.typicode.com/posts/1";
+              //clear output
+              function clearOutput() {
+                     outputDiv.innerHTML = ""
+              }
+              //display
+              function displayData(title, data) {
+                     const container = document.createElement('div');
+                     container.innerHTML = `<h2>${title}</h2><pre>${JSON.stringify(data, null, 2)}</pre>`;
+                     outputDiv.appendChild(container);
+              }
+              function fetchDataWithCallBack() {
+                     clearOutput();
+                     const xhr = new XMLHttpRequest();
+                     xhr.open('GET', url, true);
+                     xhr.onload = () => {
+                            if (xhr.status === 200) {
+                                   displayData('callback', JSON.parse(xhr.responseText));
+                            }
+                            else {
+                                   console.log('error');
+                                   const dataError = xhr.status;
+                            }
+                     }
+                     xhr.onerror = () => {
+                            displayData('callback error', 'error: ')
+                     }
+                     xhr.send();
+              }
+
+
+       </script>
+</body>
+
+</html>

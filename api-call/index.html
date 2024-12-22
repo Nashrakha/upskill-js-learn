@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>API</title>
+</head>
+
+<body>
+       <div id="dataContainer"></div>
+       <p id="dataStatus">Data Status</p>
+       <script>
+              const apiUrl = "https://jsonplaceholder.typicode.com/comments?postId=1";
+              const dataContainer = document.querySelector('#dataContainer');
+              const dataStatus = document.querySelector('#dataStatus');
+              //get - get resource from server
+              function getData() {
+                     //fecth api call
+                     fetch(apiUrl)
+                     .then((response)=> response.json())
+                     .the
+              }
+            
+       </script>
+</body>
+
+</html>
